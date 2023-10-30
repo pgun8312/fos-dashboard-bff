@@ -1,0 +1,22 @@
+# Ignore node_modules (where your project's dependencies are installed)
+node_modules/
+
+# Ignore log files and other generated files
+logs/
+*.log
+npm-debug.log*
+
+# Ignore .env files that may contain sensitive information
+.env
+
+# Ignore build/compiled output
+build/
+dist/
+*.bundle.js
+
+# Optional: Ignore OS-specific or editor-specific files
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*.swo
