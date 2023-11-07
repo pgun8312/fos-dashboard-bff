@@ -1,5 +1,7 @@
 const express = require('express');
 const orderService = require('../services/orderService');
+const adminRoutes = require('../middleware/adminRoutes');
+const userRoutes = require('../middleware/userRoutes');
 const router = express.Router();
 
 /**
@@ -15,7 +17,7 @@ const router = express.Router();
  *     tags:
  *      - Orders
  */
-router.get('/', orderService.getAllOrders);
+router.get('/',adminRoutes, orderService.getAllOrders);
 /**
  * @openapi
  * /api/v1/orders:
@@ -49,7 +51,7 @@ router.get('/', orderService.getAllOrders);
  *     tags:
  *      - Orders
  */
-router.post('/',orderService.placeOrder);
+router.post('/',userRoutes,orderService.placeOrder);
 /**
  * @openapi
  * /api/v1/orders/{orderId}:
@@ -70,7 +72,7 @@ router.post('/',orderService.placeOrder);
  *     tags:
  *      - Orders
  */
-router.get('/:orderId', orderService.getOrderById);
+router.get('/:orderId',userRoutes, orderService.getOrderById);
 /**
  * @openapi
  * /api/v1/orders/{orderId}:
@@ -101,7 +103,7 @@ router.get('/:orderId', orderService.getOrderById);
  *     tags:
  *      - Orders
  */
-router.patch('/:orderId', orderService.updateOrder);
+router.patch('/:orderId',adminRoutes, orderService.updateOrder);
 /**
  * @openapi
  * /api/v1/orders/{orderId}:
@@ -122,7 +124,7 @@ router.patch('/:orderId', orderService.updateOrder);
  *     tags:
  *      - Orders
  */ 
-router.delete('/:orderId', orderService.deleteOrder);
+router.delete('/:orderId',userRoutes, orderService.deleteOrder);
 /**
  * @openapi
  * /api/v1/orders/user/{userId}:
@@ -143,5 +145,5 @@ router.delete('/:orderId', orderService.deleteOrder);
  *     tags:
  *      - Orders
  */
-router.get('/user/:userId', orderService.getOrdersByUserId);
+router.get('/user/:userId',userRoutes, orderService.getOrdersByUserId);
 module.exports = router;

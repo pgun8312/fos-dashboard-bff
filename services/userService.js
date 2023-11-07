@@ -30,9 +30,9 @@ const userService = {
         })
     }
     },
-    getUserById: async(req, res) => {
+    getUserByUserSub: async(req, res) => {
         try{
-            const response = await axios.get(`${userServiceUrl}/users/${req.params.userId}`);
+            const response = await axios.get(`${userServiceUrl}/users/${req.params.userSub}`);
             res.status(StatusCodes.OK).json(response.data);
         }
         catch(error) {

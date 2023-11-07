@@ -41,25 +41,24 @@ router.post('/', userService.createUser);
 router.get('/', userService.getAllUsers);
 /**
  * @openapi
- * /api/v1/users/{userId}:
+ * /api/v1/users/{userSub}:
  *   get:
- *     summary: Retrieve a specific user by ID
+ *     summary: Retrieve a specific user by User Sub ID
  *     parameters:
  *       - in: path
- *         name: userId
+ *         name: userSub
  *         schema:
- *           type: integer
- *         required: true
- *         description: The ID of the User to retrieve
+ *           type: String
+ *         description: The User sub of the User to retrieve
  *     responses:
  *       200:
  *         description: Successful response
  *     externalDocs:
- *       url: 'http://localhost:8082/swagger-ui/index.html#/user-controller/getUserById'
+ *       url: 'http://localhost:8082/swagger-ui/index.html#/user-controller/getUserBy'
  *     tags:
  *      - Users
  */
-router.get('/:userId', userService.getUserById);
+router.get('/:userSub', userService.getUserByUserSub);
 /**
  * @openapi
  * /api/v1/users/{userId}:

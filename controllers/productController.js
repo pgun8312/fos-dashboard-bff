@@ -1,5 +1,8 @@
 const express = require('express');
 const productService = require('../services/productService');
+const adminRoutes = require('../middleware/adminRoutes');
+const userRoutes = require('../middleware/userRoutes');
+const { verifyToken } = require('../middleware/verifyToken');
 const router = express.Router();
 
 /**
@@ -31,7 +34,7 @@ const router = express.Router();
  *     tags:
  *      - Products
  */
-router.post('/', productService.createProduct);
+router.post('/',verifyToken,adminRoutes, productService.createProduct);
 /**
  * @openapi
  * /api/v1/products:
@@ -45,7 +48,7 @@ router.post('/', productService.createProduct);
  *     tags:
  *      - Products
  */
-router.get('/', productService.getAllProducts);
+router.get('/',productService.getAllProducts);
 /**
  * @openapi
  * /api/v1/products/{productId}:
@@ -66,7 +69,7 @@ router.get('/', productService.getAllProducts);
  *     tags:
  *      - Products
  */
-router.get('/:productId', productService.getProductById);
+router.get('/:productId',verifyToken,userRoutes, productService.getProductById);
 /**
  * @openapi
  * /api/v1/products/{productId}:
@@ -106,7 +109,7 @@ router.get('/:productId', productService.getProductById);
  *     tags:
  *      - Products
  */
-router.put('/:productId', productService.updateProduct);
+router.put('/:productId',verifyToken, adminRoutes, productService.updateProduct);
 /**
  * @openapi
  * /api/v1/products/{productId}:
@@ -127,6 +130,6 @@ router.put('/:productId', productService.updateProduct);
  *     tags:
  *      - Products
  */
-router.delete('/:productId', productService.deleteProduct);
+router.delete('/:productId',verifyToken,adminRoutes, productService.deleteProduct);
 
 module.exports = router;
