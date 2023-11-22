@@ -1,5 +1,5 @@
-const express = require('express');
-const userService = require('../services/userService')
+const express = require("express");
+const userService = require("../services/userService");
 const router = express.Router();
 
 /**
@@ -34,11 +34,11 @@ const router = express.Router();
  *     tags:
  *      - Users
  */
-router.post('/', userService.createUser);
+router.post("/", userService.createUser);
 /**
  * not implemented backend end point
  */
-router.get('/', userService.getAllUsers);
+router.get("/", userService.getAllUsers);
 /**
  * @openapi
  * /api/v1/users/{userSub}:
@@ -58,7 +58,7 @@ router.get('/', userService.getAllUsers);
  *     tags:
  *      - Users
  */
-router.get('/:userSub', userService.getUserByUserSub);
+router.get("/:userId", userService.getUserByUserId);
 /**
  * @openapi
  * /api/v1/users/{userId}:
@@ -98,7 +98,7 @@ router.get('/:userSub', userService.getUserByUserSub);
  *     tags:
  *      - Users
  */
-router.put('/:userId', userService.updateUser);
+router.put("/:userId", userService.updateUser);
 /**
  * @openapi
  * /api/v1/users/{userId}:
@@ -119,7 +119,7 @@ router.put('/:userId', userService.updateUser);
  *     tags:
  *      - Users
  */
-router.delete('/:userId', userService.deleteUser);
+router.delete("/:userId", userService.deleteUser);
 /**
  * @openapi
  * /api/v1/users/user-profile:
@@ -150,7 +150,7 @@ router.delete('/:userId', userService.deleteUser);
  *     tags:
  *      - Users
  */
-router.post('/user-profile', userService.createUserProfile);
+router.post("/user-profile", userService.createUserProfile);
 
 /**
  * @openapi
@@ -172,6 +172,7 @@ router.post('/user-profile', userService.createUserProfile);
  *     tags:
  *      - Users
  */
-router.get('/user-profile/:userId',userService.getUserProfileById);
+router.get("/user-profile/:userId", userService.getUserProfileById);
+router.put("/user-profile/:userId", userService.updateUserProfile);
 
 module.exports = router;
