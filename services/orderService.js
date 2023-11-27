@@ -107,16 +107,49 @@ const orderService = {
   },
   getOrderById: async (req, res) => {
     try {
-      const response = await axios.get(
+      const orderResponse = await axios.get(
         `${orderServiceUrl}/orders/${req.params.orderId}`
       );
-      res.status(StatusCodes.OK).json(response.data);
+
+      const { userId } = orderResponse.data;
+
+      const userDetailResponse = await axios.get(
+        `${userServiceUrl}/users/${userId}`
+      );
+
+      //get the userProfileDetails
+      const userProfileResponse = await axios.get(
+        `${userServiceUrl}/users/user-profile/${userId}`
+      );
+
+      //create the user Details map with the userProfile conditionally, because user Profile may not exists
+      let UserResponse = userDetailResponse.data;
+
+      if (
+        userProfileResponse.data &&
+        typeof userProfileResponse.data === "object"
+      ) {
+        const { deliveryAddress, city, postalCode } = userProfileResponse.data;
+        UserResponse = {
+          ...UserResponse,
+          deliveryAddress,
+          city,
+          postalCode,
+        };
+      }
+
+      const response = {
+        ...orderResponse.data,
+        userDetails: UserResponse,
+      };
+
+      res.status(StatusCodes.OK).json(response);
     } catch (error) {
       const status =
         error?.response?.status ?? StatusCodes.INTERNAL_SERVER_ERROR;
       const errorMessage = error?.response?.data ?? "Internal Server Error";
       res.status(status).json({
-        error: errorMessage,
+        error: error,
       });
     }
   },
