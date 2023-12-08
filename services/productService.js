@@ -1,5 +1,5 @@
 const axios = require('axios');
-const productServiceUrl = 'http://localhost:8080/api/v1';
+const productServiceUrl = process.env.PRODUCT_SERVICE_URL || 'http://10.97.94.32:8080/api/v1';
 const {	StatusCodes} = require('http-status-codes');
 const productService = {
 

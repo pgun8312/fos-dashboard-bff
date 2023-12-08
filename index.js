@@ -15,7 +15,12 @@ const adminRoutes = require("./middleware/adminRoutes");
 dotenv.config({ path: "./config.env" });
 
 const app = express();
-const port = process.env.PORT || 3000;
+
+// Disable x-powered-by header
+app.disable('x-powered-by');
+
+
+const port = process.env.PORT || 4000;
 
 //cognito setting
 const userPool = cognito.userPool;
@@ -52,7 +57,12 @@ const options = {
 const openApiSpecification = swaggerJSDoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openApiSpecification));
 
-app.use(cors());
+const corsOptions = {
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
+  optionsSuccessStatus: 200, //some legacy browsers choke on 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));

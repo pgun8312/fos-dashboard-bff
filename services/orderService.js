@@ -1,7 +1,7 @@
 const axios = require("axios");
-const productServiceUrl = "http://localhost:8080/api/v1";
-const orderServiceUrl = "http://localhost:8081/api/v1";
-const userServiceUrl = "http://localhost:8082/api/v1";
+const productServiceUrl = process.env.PRODUCT_SERVICE_URL || 'http://10.97.94.32:8080/api/v1';
+const orderServiceUrl = process.env.ORDER_SERVICE_URL || 'http://10.97.94.32:8081/api/v1';
+const userServiceUrl = process.env.USER_SERVICE_URL || 'http://10.97.94.32:8082/api/v1';
 const { StatusCodes } = require("http-status-codes");
 
 const orderService = {

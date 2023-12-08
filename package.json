@@ -1,9 +1,14 @@
 {
   "name": "fos-dashboard-bff",
+  "description": "Backend For Frontend for FOS Dashboard",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "author": "Pasindu Gunawardana",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pgun8312/fos-dashboard-bff"
+  },
   "scripts": {
     "start:prod": "node index.js",
     "dev": "nodemon index.js",

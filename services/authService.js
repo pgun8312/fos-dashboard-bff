@@ -5,7 +5,7 @@ const resendConfirmationCode = require("../cognito/actions/resend-confirmation-c
 const confirmSignUp = require("../cognito/actions/confirm-sign-up");
 const initiateAuth = require("../cognito/actions/initiate-auth");
 const jwt = require("jsonwebtoken");
-const userServiceUrl = "http://localhost:8082/api/v1";
+const userServiceUrl = process.env.USER_SERVICE_URL || 'http://10.97.94.32:8082/api/v1';
 
 const authService = {
   signUp: async (req, res) => {

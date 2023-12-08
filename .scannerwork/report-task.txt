@@ -1,6 +1,6 @@
 projectKey=fos-dashboard-bff
-serverUrl=http://localhost:8090
+serverUrl=http://10.97.94.32:8090
 serverVersion=9.9.2.77730
-dashboardUrl=http://localhost:8090/dashboard?id=fos-dashboard-bff
-ceTaskId=AYwkd_Y8hRcVV39Lnnjw
-ceTaskUrl=http://localhost:8090/api/ce/task?id=AYwkd_Y8hRcVV39Lnnjw
+dashboardUrl=http://10.97.94.32:8090/dashboard?id=fos-dashboard-bff
+ceTaskId=AYxK32ECOgvWqy4AHurC
+ceTaskUrl=http://10.97.94.32:8090/api/ce/task?id=AYxK32ECOgvWqy4AHurC
