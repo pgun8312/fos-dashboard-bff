@@ -12,7 +12,7 @@ const cognito = require("./configurations/cognito");
 const { verifyToken } = require("./middleware/verifyToken");
 const adminRoutes = require("./middleware/adminRoutes");
 
-dotenv.config({ path: "./config.env" });
+dotenv.config({ path: "./.env" });
 
 const app = express();
 

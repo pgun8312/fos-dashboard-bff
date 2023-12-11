@@ -93,5 +93,9 @@ docker-compose down
 
 docker-compose up --build
 
+# when running sonar-scanner locally
+sonar-scanner -Dsonar.login=your_sonar_login_token -Dsonar.password=your_sonar_password -Dsonar.host.url=http://your-sonarqube-server-ip:port
+
+ex: sonar-scanner -Dsonar.login=admin -Dsonar.password=pgun8312 -Dsonar.host.url=http://10.97.31.71:8090
 
 

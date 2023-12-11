@@ -25,7 +25,7 @@ const productService = {
         const status = error?.response?.status ?? StatusCodes.INTERNAL_SERVER_ERROR;
         const errorMessage = error?.response?.data ?? 'Internal Server Error';
         res.status(status).json({
-            error: errorMessage
+            error: error
         })
     }
     },
